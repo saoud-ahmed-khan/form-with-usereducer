@@ -3,14 +3,19 @@ import React from "react";
 function App() {
   const initialvalue =
   {
-    count: 0
+    count1: 0,
+    count2:0
   }
   function reducer(state, action) {
     switch (action) {
-      case 'incriment':
-        return { count: state.count + 1 }
-      case 'dicriment':
-        return { count: state.count - 1 }
+      case 'incriment1':
+        return { count: state.count1 + 1 }
+      case 'dicriment1':
+        return { count: state.count1 - 1 }
+        case 'incriment2':
+        return { count: state.count2 + 1 }
+      case 'dicriment2':
+        return { count: state.count2 - 1 } 
       case 'reset':
         return { count: 0 }
 
@@ -23,10 +28,13 @@ function App() {
   console.log(state);
   return (
     <div className="App">
-      <h3>{state.count}</h3>
+      <h3>{state.count1}</h3>
+      <h3>{state.count2}</h3>
       <br />
-      <button onClick={() => { dispatch('incriment') }}>incriment</button>
-      <button onClick={() => { dispatch('dicriment') }}>incriment</button>
+      <button onClick={() => { dispatch('incriment1') }}>incriment 1</button>
+      <button onClick={() => { dispatch('dicriment1') }}>dincriment 1</button>
+      <button onClick={() => { dispatch('incriment2') }}>incriment 1</button>
+      <button onClick={() => { dispatch('dicriment2') }}>dincriment 1</button>
       <button onClick={() => { dispatch('reset') }}>Reset</button>
 
 
