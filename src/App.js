@@ -7,23 +7,22 @@ function App() {
     count2:0
   }
   function reducer(state, action) {
-    switch (action) {
+    switch (action.type) {
       case 'incriment1':
-        return { count: state.count1 + 1 }
+        return { ...state ,count1: state.count1 + action.payload}
       case 'dicriment1':
-        return { count: state.count1 - 1 }
+        return {...state , count1: state.count1 - action.payload }
         case 'incriment2':
-        return { count: state.count2 + 1 }
+        return {...state , count2: state.count2 + action.payload }
       case 'dicriment2':
-        return { count: state.count2 - 1 } 
+        return { ...state ,count2: state.count2 - action.payload } 
       case 'reset':
-        return { count: 0 }
+        return { }
 
       default:
         return state.count
     }
   }
-
   const [state, dispatch] = React.useReducer(reducer, initialvalue)
   console.log(state);
   return (
@@ -31,10 +30,10 @@ function App() {
       <h3>{state.count1}</h3>
       <h3>{state.count2}</h3>
       <br />
-      <button onClick={() => { dispatch('incriment1') }}>incriment 1</button>
-      <button onClick={() => { dispatch('dicriment1') }}>dincriment 1</button>
-      <button onClick={() => { dispatch('incriment2') }}>incriment 1</button>
-      <button onClick={() => { dispatch('dicriment2') }}>dincriment 1</button>
+      <button onClick={() => { dispatch({type:'incriment1', payload:10}) }}>incriment by 10</button>
+      <button onClick={() => { dispatch({type:'dincriment1', payload:10}) }}>dincriment by 10</button>
+      <button onClick={() => { dispatch({type:'incriment2', payload:1}) }}>incriment2 by 1</button>
+      <button onClick={() => { dispatch({type:'dincriment1', payload:1}) }}>dincriment2 by 1</button>
       <button onClick={() => { dispatch('reset') }}>Reset</button>
 
 
